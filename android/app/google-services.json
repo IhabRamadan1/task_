@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "856543842158",
+    "project_id": "test-dd4a9",
+    "storage_bucket": "test-dd4a9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856543842158:android:c24c7e14940c1590c0fb7f",
+        "android_client_info": {
+          "package_name": "com.albatal.alba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmLQL_oForHu_hkLbZ_asU-XAoLzsO2MY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
