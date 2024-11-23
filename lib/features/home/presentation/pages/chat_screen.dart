@@ -1,4 +1,5 @@
 
+import 'package:altaqwaa_new/res/themes/colors.dart';
 import 'package:altaqwaa_new/res/themes/dark_mode.dart';
 import 'package:altaqwaa_new/shared_widgets/custom_textfield.dart';
 import 'package:flutter/Material.dart';
@@ -20,7 +21,7 @@ class ChatScreen extends StatelessWidget {
     return  Scaffold(
       backgroundColor: Colors.black87,
       appBar: AppBar(
-        backgroundColor: Colors.purple.shade200,
+        backgroundColor: AppColors.senderColor.withOpacity(0.7),
         centerTitle: true,
         leading: IconButton(onPressed: (){
 
@@ -90,7 +91,7 @@ Widget _buildMessageItem(DocumentSnapshot doc) {
       margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       constraints: const BoxConstraints(maxWidth: 250), // Limit bubble width
       decoration: BoxDecoration(
-        color: isSender ? Colors.purple : Colors.grey.shade300,
+        color: isSender ? AppColors.senderColor : AppColors.receiverColor,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
@@ -120,8 +121,7 @@ Widget _buildMessageItem(DocumentSnapshot doc) {
 
 Widget _buildUserInput(TextEditingController controller, VoidCallback onSend) {
   return Container(
-    padding: const EdgeInsets.all(8.0),
-    color: Colors.grey.shade200,
+    color:AppColors.backgroundColor,
     child: Row(
       children: [
         Expanded(
@@ -129,9 +129,9 @@ Widget _buildUserInput(TextEditingController controller, VoidCallback onSend) {
             controller: controller,
             decoration: InputDecoration(
               hintText: 'Type your message',
-              hintStyle: TextStyle(color: Colors.grey.shade500),
+              hintStyle: const TextStyle(color: AppColors.greyColor),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: AppColors.backgroundColor,
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 10,
@@ -148,8 +148,8 @@ Widget _buildUserInput(TextEditingController controller, VoidCallback onSend) {
           onTap: onSend,
           child: const CircleAvatar(
             radius: 25,
-            backgroundColor: Colors.purple,
-            child: Icon(Icons.send, color: Colors.white),
+            backgroundColor: AppColors.backgroundColor,
+            child: Icon(Icons.send, color: AppColors.greyColor,),
           ),
         ),
       ],
@@ -194,7 +194,7 @@ Widget buildTypingIndicator(String receiverId) {
     stream: FirebaseFirestore.instance.collection('users').doc(receiverId).snapshots(),
     builder: (context, snapshot) {
       if (!snapshot.hasData || snapshot.data!.data() == null) {
-        return const SizedBox(); // No typing indicator if data is null
+        return const SizedBox();
       }
 
       final data = snapshot.data!.data() as Map<String, dynamic>;
